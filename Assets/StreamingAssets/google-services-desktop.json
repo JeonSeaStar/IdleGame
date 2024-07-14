@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "357130692486",
+    "firebase_url": "https://idlegame-8259c-default-rtdb.firebaseio.com",
+    "project_id": "idlegame-8259c",
+    "storage_bucket": "idlegame-8259c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357130692486:android:65f8628fdafb9709d32e07",
+        "android_client_info": {
+          "package_name": "com.HaeseongGames.IdleGame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357130692486-c6rsslcpof5ubrfsjqesgtvib5nl60dr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ2jBANH7U6wydghytvBIvdsNmiRwV6aY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357130692486-c6rsslcpof5ubrfsjqesgtvib5nl60dr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
