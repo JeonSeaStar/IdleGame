@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Net.Http;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
 using Firebase;
@@ -25,8 +25,6 @@ public class FirebaseGoogleLogin : MonoBehaviour
     public Image userProfileImage;
     public string imageUrl;
     public GameObject LoginScreen, ProfileScreen;
-    public TextMeshProUGUI errorDebug;
-    public TextMeshProUGUI boolText;
 
     private void Awake()
     {
@@ -34,33 +32,15 @@ public class FirebaseGoogleLogin : MonoBehaviour
         {
             if (task.IsCanceled || task.IsFaulted)
             {
-                errorDebug.text = "Firebase Initialize Failed";
                 Debug.LogError("Firebase Initialize Failed");
                 return;
             }
 
-            errorDebug.text = "Firebase Initialize Complete";
             FirebaseApp app = FirebaseApp.DefaultInstance;
             auth = FirebaseAuth.DefaultInstance;
 
             configuration = new GoogleSignInConfiguration { WebClientId = googleWebAPI, RequestEmail = true, RequestIdToken = true };
         });
-
-        //configuration = new GoogleSignInConfiguration
-        //{
-        //    WebClientId = googleWebAPI,
-        //    RequestIdToken = true
-        //};
-    }
-
-    private void Start()
-    {
-        //InitFirebase();
-    }
-
-    private void InitFirebase()
-    {
-        auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
     }
 
     public void GoogleSignInClick()
@@ -75,15 +55,12 @@ public class FirebaseGoogleLogin : MonoBehaviour
 
     private void OnGoogleAuthenticatedFinished(Task<GoogleSignInUser> task)
     {
-        boolText.text = task.IsFaulted.ToString();
         if (task.IsFaulted)
         {
-            errorDebug.text = "Fault1";
             Debug.LogError("Fault1");
         }
         else if(task.IsCanceled)
         {
-            errorDebug.text = "Login Cancel";
             Debug.LogError("Login Cancel");
         }
         else
@@ -94,13 +71,11 @@ public class FirebaseGoogleLogin : MonoBehaviour
             {
                 if (task.IsCanceled)
                 {
-                    errorDebug.text = "SignInWithCredentialAsync was canceled.";
                     Debug.LogError("SignInWithCredentialAsync was canceled.");
                     return;
                 }
                 if (task.IsFaulted)
                 {
-                    errorDebug.text = "SignInWithCredentialAsync encountered an error: " + task.Exception;
                     Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
                     return;
                 }
@@ -127,9 +102,10 @@ public class FirebaseGoogleLogin : MonoBehaviour
 
     private IEnumerator LoadImage(string imageUri)
     {
-        WWW www = new WWW(imageUri);
+        UnityWebRequest www = new UnityWebRequest(imageUri);
         yield return www;
 
-        userProfileImage.sprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0));
+        Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+        userProfileImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
     }
 }

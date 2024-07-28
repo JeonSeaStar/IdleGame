@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "357130692486-8ei5f8k9vr3uurh1ke267ru5t27951di.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.HaeseongGames.IdleGame",
+            "certificate_hash": "41a6e748586c039a4868d37168089f19e0a74a9d"
+          }
+        },
+        {
           "client_id": "357130692486-c6rsslcpof5ubrfsjqesgtvib5nl60dr.apps.googleusercontent.com",
           "client_type": 3
         }
