@@ -174,6 +174,7 @@ MonoBehaviour:
   - {fileID: 1134133279}
   - {fileID: 936481516}
   - {fileID: 957287389}
+  testBattle: 0
 --- !u!1 &143652025
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +681,7 @@ MonoBehaviour:
   moveSpeed: 3
   animator: {fileID: 335110504}
   rigid: {fileID: 335110508}
+  target: {fileID: 0}
 --- !u!50 &335110508
 Rigidbody2D:
   serializedVersion: 4
@@ -836,7 +838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentState: 0
-  BG: {fileID: 50901830}
+  BG: {fileID: 50901832}
   mainPlayer: {fileID: 335110507}
   enemy: {fileID: 1769572438}
 --- !u!1 &673086299

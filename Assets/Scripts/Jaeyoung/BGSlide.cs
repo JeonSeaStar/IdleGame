@@ -45,7 +45,7 @@ public class BGSlide : MonoBehaviour
 
     public void SwitchMove(bool isBattle)
     {
-        if(isBattle)
+        if(!isBattle)
         {
             mapSlide = StartCoroutine(StartOn());
         }
