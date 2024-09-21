@@ -58,6 +58,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void EnemyDown()
+    {
+        mainPlayer.target = null;
+
+    }
+
     private void StartBattle()
     {
         BG.SwitchMove(true);
